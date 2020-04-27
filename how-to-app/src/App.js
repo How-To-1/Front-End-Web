@@ -6,8 +6,8 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 //components
 import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
-import ContributerUserDashboard from './components/ContributerUserDashboard';
-import ViewUserDashboard from './components/ViewUserDashboard';
+import ContributerUserProfile from './components/ContributerUserProfile';
+import ViewerUserProfile from './components/ViewerUserProfile';
 
 //privateroute import
 import PrivateRoute from './utils/PrivateRoute';
@@ -21,8 +21,10 @@ function App() {
     <Route path='/signup' component={Signup}/>
 
     {/* Private Routes */}
-    <PrivateRoute path='/user-view-dashboard' component={ViewUserDashboard}/>
-    <PrivateRoute path='/user-contributor-dashboard' component={ContributerUserDashboard}/>
+    {/* route to the view/save howTo page */}
+    {/* <PrivateRoute path='/user-view-dashboard' component={ViewerUserProfile}/>  */}
+    {/* route to the contributor/create New howto Page */}
+    <PrivateRoute path='/contributor-dashboard' component={ContributerUserProfile}/>
     
 
     </Switch>
