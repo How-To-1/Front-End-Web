@@ -1,12 +1,11 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from "redux"
 
-import userContribReducer from './userContribReducer';
-import userViewerReducer from './userViewerReducer';
+import howToReducer from "./howToReducer"
+import userReducer from "./userReducer"
 
 const rootReducer = combineReducers({
-    userContribReducer,
-    userViewerReducer,
-
+    howToReducer,
+    userReducer
 })
 
 export default rootReducer;

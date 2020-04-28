@@ -7,10 +7,9 @@ import * as serviceWorker from './serviceWorker';
 //Imports From James for Redux/PrivateRouting
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import { applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import {createStore, applyMiddleware} from 'redux'
-import rootReducer from './components/store//reducers';
+import rootReducer from './components/store/reducers/index';
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
 import ContributerUserProfile from './components/ContributerUserProfile';
-import ViewerUserProfile from './components/ViewerUserProfile';
+// import ViewerUserProfile from './components/ViewerUserProfile';
 
 //privateroute import
 import PrivateRoute from './utils/PrivateRoute';
