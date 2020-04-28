@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
     <Switch>
-    <Route exact path='/' componenent={Login}/>
+    
     <Route path='/login' component={Login}/>
     <Route path='/signup' component={Signup}/>
 
@@ -24,7 +24,7 @@ function App() {
     {/* route to the view/save howTo page */}
     {/* <PrivateRoute path='/user-view-dashboard' component={ViewerUserProfile}/>  */}
     {/* route to the contributor/create New howto Page */}
-    <PrivateRoute path='/contributor-dashboard' component={ContributerUserProfile}/>
+    <PrivateRoute path='/user' component={ContributerUserProfile}/>
     
 
     </Switch>
