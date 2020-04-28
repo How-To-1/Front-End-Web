@@ -1,28 +1,33 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LandingPage from './LandingPage/LandingPage.js'
-import Header from '../Header.js'
-import Footer from '../Footer.js'
-import AccountPage from '../AccountPage'
+import LandingPage from './components/LandingPage/LandingPage.js'
+import Header from './components/Header.js'
+import Footer from './components/Footer.js'
+import AccountPage from './components/AccountPage/AccountPage.js'
 import {BrowserRouter as Router} from 'react-router-dom'
+import SignUpPage from './components/SignUpPage.js'
 
 function App() {
   return (
-    
-    <div className="App">
-      <header className="App-header">
-        <Header />
+    <Router>
+    <div>
+      <header>
+        {/* <Header /> */}
       </header>
 
       <div>
-        <LandingPage />
+        <SignUpPage />
+        
+        {/* <LandingPage />
+        <AccountPage /> */}
       </div>
       
       <footer>
         <Footer />
       </footer>
     </div>
+    </Router>
 
   );
 }

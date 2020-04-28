@@ -1,5 +1,5 @@
 import React from 'react'
-import FeaturedGuides from how-to-'./LandingPage/FeaturedArticle.js';
+import FeaturedGuides from './FeaturedGuides.js';
 
 const LandingPage=() => {
 
