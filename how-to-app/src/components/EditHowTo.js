@@ -38,7 +38,7 @@ const EditHowTo = props =>{
     const updateGuide = id =>{
        
         axiosWithAuth()
-        .put(`/guides/${guide.guides_id}`, guide)
+        .put(`/guides/${guide.id}`, guide)
         .then(res =>{
             push(`/user`);
         })
@@ -65,9 +65,9 @@ const EditHowTo = props =>{
              onChange={changeHandler}
              />
              </label>
-            <select id='category' name='category'onChange={changeHandler}>
+            <select id='category' name='category' onChange={changeHandler}>
             
-            <option onChange={changeHandler} value='automotive'>Automotive</option>
+            <option onChange={changeHandler}  value='automotive'>Automotive</option>
             <option onChange={changeHandler} value='Electonics'>Electronics</option>
             <option onChange={changeHandler} value='Food'>Food</option>
              <option onChange={changeHandler} value="Home">Home</option>

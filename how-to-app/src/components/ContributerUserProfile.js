@@ -102,7 +102,10 @@ const ContributerUserProfile = props => {
             <div key={guide.id}>
 
                 <h3>{guide.title}</h3>
-                <p>{guide.description}</p>
+                <h4>Steps:</h4>
+                <p> {guide.description}</p>
+                <h4>Category:</h4>
+                <p>{guide.category}</p>
                 <button onClick={()=> deleteHowTo(guide.id)}>Delete How To</button>
                  
                  
