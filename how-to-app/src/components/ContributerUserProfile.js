@@ -6,6 +6,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 const initialState = {
     title: '',
     description: '',
+    
 }
 
 
@@ -13,11 +14,12 @@ const ContributerUserProfile = props => {
     const [newHowTo, setNewHowTo] = useState({
         title: '',
         description: '',
+        guides_id: Date.now()
         
 
     })
-    const [editing, setEditing] = useState(false);
-    const [editHowTo, setEditHowTo] = useState(initialState);
+    // const [editing, setEditing] = useState(false);
+    // const [editHowTo, setEditHowTo] = useState(initialState);
 
     useEffect(()=>{
         props.fetchHowTo();
@@ -32,16 +34,20 @@ const ContributerUserProfile = props => {
         e.preventDefault();
     }
 
-    const editForm = e => {
-        e.preventDefault();
-    }
+    // const editForm = e => {
+    //     e.preventDefault();
+    // }
 
-    const deleter = howTo =>{
+    const deleteHowTo = id =>{
+        
         axiosWithAuth()
-        .delete(`/guides/${howTo.id}`)
+        .delete(`/guides/${id}`)
         .then(res =>
-            console.log('successfully deleted', res))
-            .catch(err=>console.log('sorry could not delete:', err))
+            
+            console.log('successfully deleted', res),
+            props.history.push('/user'))
+            .catch(err=>
+                console.log('sorry could not delete:', err))
     }
 
     return(
@@ -49,7 +55,7 @@ const ContributerUserProfile = props => {
             
 
             <div>
-            <h1>Creator User Dashboard</h1>
+    <h1>Hello {props.username}</h1>
             <form onSubmit={submitForm}>
             <label>
                 New How To Title:
@@ -71,38 +77,25 @@ const ContributerUserProfile = props => {
                 value={ newHowTo.name}
                 />
             </label>
+            <input
+            type='dropdown'
+             />
+
             <button type='submit' onClick={()=>props.postHowTo(newHowTo)}>Submit</button>
             </form>
 
         <h3>Current Guides</h3>
-        {console.log(props.guides, 'current guides prop.guides')}
+        {/* {console.log(props.guides, 'current guides prop.guides')} */}
         {props.guides.map(guide =>{
         
             return(
             <div key={guide.id}>
+
                 <p>{guide.title}</p>
                 <p>{guide.description}</p>
-                <button onClick={deleter(guide)}>Delete How To</button>
-            
-                <div>
-         <form onSubmit={editForm}>
-         <legend>Edit How To</legend>
-         <label>
-             Update Title:
-             <input
-             onChange={e=>{
-                 setEditHowTo({...editHowTo, newHowTo: e.target.value})
-             }}
-             
-             
-             />
-         </label>
-
-         </form>
-
-
-
-         </div>
+                <button onClick={()=> deleteHowTo(guide.id)}>Delete How To</button>
+                
+               
         
         </div>)
          })} 
@@ -119,7 +112,9 @@ const mapStateToProps = state =>{
         guides: state.howToReducer.guides,
         isFetching: state.howToReducer.isFetching,
         error: state.howToReducer.error,
-        addingtHowTo: state.howToReducer.addingtHowTo
+        addingtHowTo: state.howToReducer.addingtHowTo,
+
+        
     }
 }
 
