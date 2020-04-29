@@ -5,10 +5,12 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 
 const EditHowTo = props =>{
     const initialHowTo = {
-        id: '',
+        
         title: '',
         description: '',
         category: '',
+        guides_id: Date.now(),
+        image: null,
 
     }
 
@@ -29,21 +31,23 @@ const EditHowTo = props =>{
 
     const changeHandler =e=>{
         e.persist();
-        setGuide({...guide, [e.taget.name]: e.target.value})
+        setGuide({...guide, [e.target.name]: e.target.value})
 
     }
 
     const updateGuide = id =>{
-        id.preventDefault();
+       
         axiosWithAuth()
-        .put(`/guides/${id}`)
+        .put(`/guides/${guide.guides_id}`, guide)
         .then(res =>{
-            push(`/${id}`);
+            push(`/user`);
         })
     }
 
     return(
         <div>
+            <h2>Edit Form:</h2>
+            <h3> {`${guide.title}`}</h3>
         <form onSubmit={updateGuide}>
             <input 
             type='text'
@@ -52,9 +56,26 @@ const EditHowTo = props =>{
             value={guide.title}
             onChange={changeHandler}
              />
+             <label value={guide.description}>
+             <input 
+             type="text"
+             name="description"
+             placeholder="Edit the Description"
+             
+             onChange={changeHandler}
+             />
+             </label>
+            <select id='category' name='category'onChange={changeHandler}>
+            
+            <option onChange={changeHandler} value='automotive'>Automotive</option>
+            <option onChange={changeHandler} value='Electonics'>Electronics</option>
+            <option onChange={changeHandler} value='Food'>Food</option>
+             <option onChange={changeHandler} value="Home">Home</option>
+            
+             </select>
         
         </form>
-        <button>Submit Changes!</button>
+        <button onClick={()=>updateGuide()}>Submit Changes!</button>
         </div>
     )
 
