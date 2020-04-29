@@ -1,6 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {fetchHowTo, postHowTo} from './store/actions/actionIndex';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
+const initialState = {
+    title: '',
+    description: '',
+}
+
 
 const ContributerUserProfile = props => {
     const [newHowTo, setNewHowTo] = useState({
@@ -9,6 +16,8 @@ const ContributerUserProfile = props => {
         
 
     })
+    const [editing, setEditing] = useState(false);
+    const [editHowTo, setEditHowTo] = useState(initialState);
 
     useEffect(()=>{
         props.fetchHowTo();
@@ -23,11 +32,23 @@ const ContributerUserProfile = props => {
         e.preventDefault();
     }
 
+    const editForm = e => {
+        e.preventDefault();
+    }
+
+    const deleter = howTo =>{
+        axiosWithAuth()
+        .delete(`/guides/${howTo.id}`)
+        .then(res =>
+            console.log('successfully deleted', res))
+            .catch(err=>console.log('sorry could not delete:', err))
+    }
+
     return(
         <div>
             
 
-        
+            <div>
             <h1>Creator User Dashboard</h1>
             <form onSubmit={submitForm}>
             <label>
@@ -61,11 +82,34 @@ const ContributerUserProfile = props => {
             <div key={guide.id}>
                 <p>{guide.title}</p>
                 <p>{guide.description}</p>
-       
-        
+                <button onClick={deleter(guide)}>Delete How To</button>
+            
+                <div>
+         <form onSubmit={editForm}>
+         <legend>Edit How To</legend>
+         <label>
+             Update Title:
+             <input
+             onChange={e=>{
+                 setEditHowTo({...editHowTo, newHowTo: e.target.value})
+             }}
+             
+             
+             />
+         </label>
+
+         </form>
+
+
+
+         </div>
         
         </div>)
          })} 
+        </div>
+         
+
+
         </div>
     )
 }
