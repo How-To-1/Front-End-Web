@@ -14,7 +14,8 @@ const ContributerUserProfile = props => {
     const [newHowTo, setNewHowTo] = useState({
         title: '',
         description: '',
-        guides_id: Date.now()
+        guides_id: Date.now(),
+        category: ''
         
 
     })
@@ -58,7 +59,7 @@ const ContributerUserProfile = props => {
     <h1>Hello {props.username}</h1>
             <form onSubmit={submitForm}>
             <label>
-                New How To Title:
+                Add A Title:
                 <input 
                 name='title'
                 id=''
@@ -68,7 +69,7 @@ const ContributerUserProfile = props => {
                 />
             </label>
             <label>
-                New Instructions:
+                Add Instructions:
                 <textarea
                 name="description"
                 id=''
@@ -77,14 +78,22 @@ const ContributerUserProfile = props => {
                 value={ newHowTo.name}
                 />
             </label>
-            <input
-            type='dropdown'
-             />
+            <label htmlFor="category">
+                Choose A Category:
+            <select id='category' name='category'onChange={changeHandler}>
+            
+            <option onChange={changeHandler} value='automotive'>Automotive</option>
+            <option onChange={changeHandler} value='Electonics'>Electronics</option>
+            <option onChange={changeHandler} value='Food'>Food</option>
+             <option onChange={changeHandler} value="Home">Home</option>
+            
+             </select>
+             </label>
 
             <button type='submit' onClick={()=>props.postHowTo(newHowTo)}>Submit</button>
             </form>
 
-        <h3>Current Guides</h3>
+        <h2>List of Guides</h2>
         {/* {console.log(props.guides, 'current guides prop.guides')} */}
         {props.guides.map(guide =>{
         

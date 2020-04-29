@@ -40,6 +40,7 @@ const howToReducer = (state = initialState, action) =>{
                     title: '',
                     description: '',
                     id: null,
+                    category: ''
                 }
                 return{...state, guide: [...state.guide, newHowTo]};
             case POST_HOWTO_FAIL:
