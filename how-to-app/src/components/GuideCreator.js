@@ -58,21 +58,22 @@ const GuideCreator = () => {
         })
         .catch(err => console.log(err.response));
     };
+    console.log(post);
 
         const validateChange = e => {
             yup
-            .reach(guideSchema, e.target.title)
+            .reach(guideSchema, e.target.name)
             .validate(e.target.value || e.target.checked)
             .then(valid => {
                 setErrors({
                     ...errors,
-                    [e.target.title]: ''
+                    [e.target.name]: ''
                 });
             })
             .catch(er => {
                 setErrors({
                 ...errors,
-                [e.target.title]: er.errors[0]
+                [e.target.name]: er.errors[0]
             });
         });
         };
@@ -80,7 +81,7 @@ const GuideCreator = () => {
         const inputChange = e => {
             e.persist();
             const newGuideData = {
-                ...guideData, [e.target.title]:
+                ...guideData, [e.target.name]:
                 e.target.type === 'checkbox' ? e.target.checked : e.target.value
             };
             validateChange(e);
@@ -89,15 +90,17 @@ const GuideCreator = () => {
 
 
     return (
-        <form onSubmit={publishGuide} >
         <GuideBuilder>
+        <form onSubmit={publishGuide} >
+        <div>
         <label htmlFor="title" >Guide Title:
-            <input type='text' name='title' placeholder='Title' value={guideData.title} onChange={inputChange}  />
+            <input type='text' name='title' placeholder='Title' value={guideData.name} onChange={inputChange}  />
         </label>
 
         {errors.title.length > 0 ? <p>{errors.title}</p> : null}
-        <label htmlFor="description" >Guide Body:
+        <label htmlFor="description" > Guide Body:
             <textarea rows="8" cols="70" type='text' name='description' placeholder='Description' value={guideData.description} onChange={inputChange} />
+            Guide Body:
         </label>
 
         {errors.description.length > 0 ? <p >{errors.description}</p> : null}
@@ -106,8 +109,9 @@ const GuideCreator = () => {
         <button disabled={buttonOff} type='submit'>
             Publish
         </button>
-        </GuideBuilder>
+        </div>
     </form>
+    </GuideBuilder>
     )
 }
 
