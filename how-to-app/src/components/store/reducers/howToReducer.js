@@ -15,7 +15,8 @@ import{
 const initialState = {
     guides: [],
     isFetching: false,
-    error: null
+    error: null,
+    addingHowTo: false,
 }
 
 const howToReducer = (state = initialState, action) =>{
@@ -34,17 +35,29 @@ const howToReducer = (state = initialState, action) =>{
                 isFetching: false,
                 error: action.payload
             }
+            case POST_HOWTO_SUCCESS:
+                const newHowTo = {
+                    title: '',
+                    description: '',
+                    id: null,
+                }
+                return{...state, guide: [...state.guide, newHowTo]};
+            case POST_HOWTO_FAIL:
+                return{
+                    ...state,
+                    addingHowTo: false,
+                }
         
-        case UPDATE_HOWTO:
-            return{
-                ...state,
-                title: action.payload,
-                description: action.payload
-            }
-        case ADD_HOWTO:
-            return{
+        // case UPDATE_HOWTO:
+        //     return{
+        //         ...state,
+        //         title: action.payload,
+        //         description: action.payload
+        //     }
+        // case ADD_HOWTO:
+        //     return{
 
-            }
+        //     }
             default: return state;
     }
     

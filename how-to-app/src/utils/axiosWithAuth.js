@@ -5,6 +5,7 @@ export const axiosWithAuth = () => {
     return axios.create({
         baseURL: 'https://how-to-guide-unit4-build.herokuapp.com/api',
         headers:{
+            "Content-Type": "application/json",
             Authorization: token
         }
     })

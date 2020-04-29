@@ -33,8 +33,8 @@ const handleChange = e =>{
     .post('/auth/users/login', login)
     .then(res =>{
       console.log('LOG IN POST', res)
-      localStorage.setItem('token', res.data.payload)
-      props.history.push('/')
+      localStorage.setItem('token', res.data.token)
+      props.history.push('/user')
     }).catch(err =>{console.log(err, 'POST ERROR LOGGING IN')})
   }
   

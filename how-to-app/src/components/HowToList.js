@@ -22,3 +22,5 @@ const HowToList = props => {
 
 
 }//closes howtolist component
+
+export default connect(mapStateToProps, {})( HowtoList);
