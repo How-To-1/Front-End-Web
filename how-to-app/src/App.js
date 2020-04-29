@@ -13,7 +13,7 @@ function App() {
         <Header />
       <div>
         <SignUpPage />
-        {/* <HomePage /> */}
+        <HomePage />
         <GuideCreator />
       </div>
         <Footer />

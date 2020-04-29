@@ -20,7 +20,7 @@ const HomePage = () => {
     useEffect(() => {
         axios
         .get(apiLink)
-        .then(response => setGuide(response))
+        .then(response => setGuide(response.data))
         .catch(err =>
             console.log(err));
     }, []);
@@ -31,11 +31,11 @@ const HomePage = () => {
 
     return (
         <div>
-        {/* <GuideRender>
+        <GuideRender>
             {guide.map(item => (
                 <GuideData key={item} item={item} />
             ))} 
-        </GuideRender> */}
+        </GuideRender>
         <div>
             <button>Create Article</button>
         </div>
