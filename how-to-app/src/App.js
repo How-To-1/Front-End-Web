@@ -27,7 +27,6 @@ padding-right:10px;
 function App() {
   return (
   <Router>
-    <div>
             <PageHeader>
                 <span>
                     How To Do Anything
@@ -52,7 +51,7 @@ function App() {
                 </PageLinks>
 
                 <PageLinks>
-                  <Link to ='/GuiderCreator'>
+                  <Link to ='/GuideCreator'>
                     <button>Create Guide</button>
                   </Link>
                 </PageLinks>
@@ -73,11 +72,12 @@ function App() {
                 <GuideCreator />
               </Route>
             </div>
+          
+        
 
             <div>
               <Footer />
             </div>
-        </div>
   </Router>
   );
 }
