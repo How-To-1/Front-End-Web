@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {fetchHowTo, postHowTo} from './store/actions/actionIndex';
+import {fetchHowTo, postHowTo, getUserName} from './store/actions/actionIndex';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import {Link} from 'react-router-dom';
 
 const initialState = {
     title: '',
@@ -35,9 +36,9 @@ const ContributerUserProfile = props => {
         e.preventDefault();
     }
 
-    // const editForm = e => {
-    //     e.preventDefault();
-    // }
+    const editForm = e => {
+       
+    }
 
     const deleteHowTo = id =>{
         
@@ -56,7 +57,7 @@ const ContributerUserProfile = props => {
             
 
             <div>
-    <h1>Hello {props.username}</h1>
+    <h1>{`${props.username}  Dashboard` } </h1>
             <form onSubmit={submitForm}>
             <label>
                 Add A Title:
@@ -100,10 +101,14 @@ const ContributerUserProfile = props => {
             return(
             <div key={guide.id}>
 
-                <p>{guide.title}</p>
+                <h3>{guide.title}</h3>
                 <p>{guide.description}</p>
                 <button onClick={()=> deleteHowTo(guide.id)}>Delete How To</button>
-                
+                 
+                 
+                 <Link to={`/update-howto/${guide.id}`}>
+                     <div>Edit</div> 
+                </Link>
                
         
         </div>)
@@ -123,8 +128,11 @@ const mapStateToProps = state =>{
         error: state.howToReducer.error,
         addingtHowTo: state.howToReducer.addingtHowTo,
 
+
+        username: state.userReducer.username
+       
         
     }
 }
 
-export default connect(mapStateToProps, {fetchHowTo, postHowTo})( ContributerUserProfile);
+export default connect(mapStateToProps, {fetchHowTo, postHowTo, getUserName})( ContributerUserProfile);

@@ -9,6 +9,10 @@ import{
     PUT_HOWTO_SUCCESS,
     PUT_HOWTO_FAIL,
 
+    UPDATE_HOWTO_SUCCESS,
+    UPDATE_HOWTO_FAIL
+
+
 
 } from '../actions/actionIndex';
 
@@ -49,17 +53,19 @@ const howToReducer = (state = initialState, action) =>{
                     addingHowTo: false,
                 }
         
-        // case UPDATE_HOWTO:
-        //     return{
-        //         ...state,
-        //         title: action.payload,
-        //         description: action.payload
-        //     }
-        // case ADD_HOWTO:
-        //     return{
-
-        //     }
-            default: return state;
+        case UPDATE_HOWTO_SUCCESS:
+            return{
+                ...state,
+                title: action.payload,
+                description: action.payload
+            }
+        case UPDATE_HOWTO_FAIL:
+            return{
+                ...state
+            }
+        default:return  {
+            ...state
+        }
     }
     
 }

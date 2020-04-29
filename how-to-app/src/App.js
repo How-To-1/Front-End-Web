@@ -8,7 +8,7 @@ import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
 import ContributerUserProfile from './components/ContributerUserProfile';
 // import ViewerUserProfile from './components/ViewerUserProfile';
-
+import EditHowTo from './components/EditHowTo';
 //privateroute import
 import PrivateRoute from './utils/PrivateRoute';
 
@@ -25,6 +25,7 @@ function App() {
     {/* <PrivateRoute path='/user-view-dashboard' component={ViewerUserProfile}/>  */}
     {/* route to the contributor/create New howto Page */}
     <PrivateRoute path='/user' component={ContributerUserProfile}/>
+    <PrivateRoute path='/update-howto/:id' component={EditHowTo}/>
     
 
     </Switch>
