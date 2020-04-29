@@ -16,7 +16,6 @@ const HomePage = () => {
     const[guide, setGuide]=useState([]);
     const apiLink ='https://how-to-guide-unit4-build.herokuapp.com/api/guides/'
 
-
     useEffect(() => {
         axios
         .get(apiLink)
@@ -36,9 +35,6 @@ const HomePage = () => {
                 <GuideData key={item} item={item} />
             ))} 
         </GuideRender>
-        <div>
-            <button>Create Article</button>
-        </div>
         </div>
     )
 }

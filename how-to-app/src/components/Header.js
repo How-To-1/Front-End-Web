@@ -1,5 +1,6 @@
-import React from 'react'
+/* import React from 'react'
 import styled from 'styled-components'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 const PageHeader = styled.nav `
     box-sizing: border-box;
@@ -24,11 +25,32 @@ const Header=() => {
                 <span>
                     How To Do Anything
                 </span>
-                <PageLinks>Home</PageLinks>
-                <PageLinks>Account</PageLinks>
+
+                <PageLinks>
+                    <Link to ='/'>
+                        <button>Home</button>
+                    </Link>
+                </PageLinks>
+
+                <PageLinks>
+                    <Link to ='/Account'>
+                    <button>Account</button>
+                    </Link>
+                </PageLinks>
+
+                <PageLinks>
+                    <Link to ='/SignUpPage'>
+                        <button>Sign Up</button>
+                    </Link>
+                </PageLinks>
+
+                <Route exact path ='/'>
+                    <HomePage />
+                </Route>
+
             </PageHeader>
         </div>
     )
 }
 
-export default Header
+export default Header */
