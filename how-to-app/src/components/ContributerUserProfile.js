@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {fetchHowTo, postHowTo, getUserName} from './store/actions/actionIndex';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {Button, Form, FormGroup, Card} from 'reactstrap';
 import GuideCreator from './GuideCreator';
+
 
 
 const initialState = {
@@ -33,6 +34,7 @@ const ContributerUserProfile = props =>{
 
 const [searchTerm, setSearchTerm] = useState('')
 const [searchResults, setSearchResults] = useState([])
+const history = useHistory()
 
 const handleSearch = event =>{
     setSearchTerm(event.target.value)
@@ -47,9 +49,16 @@ useEffect(()=>{
 
 
 
+
     useEffect(()=>{
         props.fetchHowTo();
     }, [])
+
+    useEffect(()=>{
+        props.postHowTo();
+        history.push('/user');
+        
+    },[])
 
     const changeHandler = e => {
         setNewHowTo({...newHowTo, [e.target.name]: e.target.value});

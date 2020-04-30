@@ -1,5 +1,6 @@
 import React from 'react'
 import { axiosWithAuth } from '../../../utils/axiosWithAuth';
+import {useHistory} from 'react-router-dom';
 
 
 
@@ -18,7 +19,7 @@ export const UPDATE_HOWTO_SUCCESS = 'UPDATE_HOWTO_SUCCESS';
 export const UPDATE_HOWTO_FAIL = 'UPDATE_HOWTO_FAIL';
 
 
-
+//const history = useHistory();
 
 export const fetchHowTo = () => dispatch =>{
        dispatch({type: FETCH_HOWTO_START})
@@ -36,11 +37,14 @@ export const postHowTo = newHowTo => dispatch =>{
     .post('/guides', newHowTo)
     .then(res =>{
         dispatch({type: POST_HOWTO_SUCCESS, payload: res.action})
-
+        //history.push('/user');
+       
     }).catch(err=>{
         dispatch({type:POST_HOWTO_FAIL, payload: err.response});
     })
 }
+
+
 
 export const getUserName = () => dispatch =>{
     dispatch({type: GET_USERNAME})
