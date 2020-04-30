@@ -25,16 +25,22 @@ const PageHeader = styled.nav `
     box-sizing: border-box;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
     padding: 1em;
-    margin-bottom: 2em;
     background-color: #e8e2db;
     color: black;
 `
 const PageLinks = styled.a `
 padding-left:10px;
 padding-right:10px;
+display:flex;
+text-align:right;
 `
+
+const Nav = styled.div`
+/* display:flex;
+justify-content: flex-end; */
+`
+
 
 
 
@@ -56,6 +62,9 @@ function App() {
 
     <div className="App">
       <PageHeader>
+        <span>
+          <img src ='https://dewey.tailorbrands.com/production/brand_version_mockup_image/524/2930508524_fcc14525-464e-4936-a671-881feb13ce35.png?cb=1588276312'></img>
+        </span>
     <Switch>
     {/* <PageHeader> */}
     <Route exact path='/login' component={Login}/>
@@ -67,9 +76,7 @@ function App() {
     {/* route to the contributor/create New howto Page */}
     <PrivateRoute path='/user' component={ContributerUserProfile}/>
     <PrivateRoute path='/update-howto/:id' component={EditHowTo}/>
-                <span>
-                    How To Do Anything
-                </span>
+                
 
                
     
@@ -79,7 +86,7 @@ function App() {
     <ContributerUserProfile />
     </PrivateRoute> */}
     </Switch>
-              
+              <Nav> 
                <PageLinks>
                     <Link to ='/'>
                         <button>Home</button>
@@ -103,11 +110,15 @@ function App() {
                     <button>Create Guide</button>
                   </Link> */}
                 {/* </PageLinks> */}
+                </Nav>
 
+                
+
+                </PageHeader> 
                 <Route exact path ='/'>
                     <HomePage />
                 </Route>
-             </PageHeader> 
+             
 
             
 

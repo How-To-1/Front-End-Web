@@ -7,31 +7,35 @@ padding:30px;
 `
 
 const GuideCard = styled.div `
-align-content:flex-start;;
+align-content:flex-start;
 width:70%;
 display:flex;
 flex-direction:column;
 justify-content:space-evenly;
-background-color:blue;
-border:5px solid black;
+background-color:#fc6b3f;
+border:5px solid #fff6da;
+border-radius:12px;
 padding:20px;
+box-shadow:0 91px 80px -62px rgba(0, 0, 0, 0.4);
 `
 const GuideTitle = styled.div `
 margin:10px;
-color:white;
+font-size:30px;
+color:black;
 padding-left:20px;
+text-align:left;
+border:2px 
 `
 
 const GuideDescription = styled.div `
 margin:10px;
-color:white;
-padding-left:20px;
+color:#262525;
+text-align:left;
 `
 
-const GuideImage = styled.div `
-margin:10px;
-color:white;
-padding-left:20px;
+const GuideImage = styled.img `
+border-radius:12px;
+box-shadow:0 91px 80px -62px rgba(0, 0, 0, 0.4);
 `
 
 const GuideData =(props) => {
@@ -45,9 +49,10 @@ const {
         <div>
             <GuideContainer>
                 <GuideCard>
+                    <GuideImage src = {image}></GuideImage>
                     <GuideTitle>{title}</GuideTitle>
                     <GuideDescription>{description}</GuideDescription>
-                    <GuideImage>{image}</GuideImage>
+                    
                 </GuideCard>
             </GuideContainer>
         </div>
