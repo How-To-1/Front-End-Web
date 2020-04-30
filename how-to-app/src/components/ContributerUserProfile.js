@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {fetchHowTo, postHowTo, getUserName} from './store/actions/actionIndex';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import {Link} from 'react-router-dom';
+import {Button, Form, FormGroup, Card} from 'reactstrap';
 
 const initialState = {
     title: '',
@@ -68,6 +69,7 @@ useEffect(()=>{
         .then(res =>
             
             console.log('successfully deleted', res),
+            alert('are you sure you want to delete this how to?'),
             props.history.push('/user'))
             .catch(err=>
                 console.log('sorry could not delete:', err))
@@ -79,7 +81,8 @@ useEffect(()=>{
 
             <div>
     <h1> Dashboard  </h1>
-            <form onSubmit={submitForm}>
+            <Form onSubmit={submitForm}>
+            <FormGroup>
             <label>
                 Add A Title:
                 <input 
@@ -90,6 +93,8 @@ useEffect(()=>{
                 value={newHowTo.name}
                 />
             </label>
+            </FormGroup>
+            <FormGroup>
             <label>
                 Add Instructions:
                 <textarea
@@ -100,6 +105,8 @@ useEffect(()=>{
                 value={ newHowTo.name}
                 />
             </label>
+            </FormGroup>
+            <FormGroup>
             <label htmlFor="category">
                 Choose A Category:
             <select id='category' name='category'onChange={changeHandler}>
@@ -111,9 +118,10 @@ useEffect(()=>{
             
              </select>
              </label>
+             </FormGroup>
 
-            <button type='submit' onClick={()=>props.postHowTo(newHowTo)}>Submit</button>
-            </form>
+            <Button type='submit' onClick={()=>props.postHowTo(newHowTo)}>Submit</Button>
+            </Form>
 
 
             <div>
@@ -126,21 +134,28 @@ useEffect(()=>{
             />
             
             </div>
-            
-            <div className='search-list'>
+
+            <Card className='search-list'>
                 {searchResults.map(item =>{
                     return(
                         <>
                         <h3>{item.title}</h3>
                         <p>{item.description}</p>
                         <p>{item.category}</p>
+                        
+                 
+                 
+                 <Link to={`/update-howto/${item.id}`}>
+                     <div>Edit</div> 
+                </Link>
+                <Button onClick={()=> deleteHowTo(item.id)}>Delete How To</Button>
                         </>
                     )
                 })}
-            </div>
-
-        <h2>List of Guides</h2>
-        {/* {console.log(props.guides, 'current guides prop.guides')} */}
+            </Card>
+                
+        {/* <h2>List of Guides</h2>
+        {console.log(props.guides, 'current guides prop.guides')}
         {props.guides.map(guide =>{
         
             return(
@@ -158,15 +173,15 @@ useEffect(()=>{
                      <div>Edit</div> 
                 </Link>
 
-                {/* <Link onClick={()=> saveHowTo(guide.id)} to={`/saved-guides/`}>
+                <Link onClick={()=> saveHowTo(guide.id)} to={`/saved-guides/`}>
                     <div>Save Guide</div>
-                </Link> */}
+                </Link>
 
 
                
         
         </div>)
-         })} 
+         })}  */}
         </div>
          
 
