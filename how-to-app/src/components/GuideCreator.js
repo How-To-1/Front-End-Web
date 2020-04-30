@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
 import axios from 'axios';
 import * as yup from 'yup';
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 
 
 const GuideBuilder = styled.div`
@@ -28,12 +29,14 @@ const GuideCreator = () => {
     const [buttonOff, setButtonOff] = useState(true);
     const [guideData, setGuideData] =useState({
         title: '',
-        description: ''
+        description: '',
+        guides_id: Date.now()
     });
 
     const [errors, setErrors] =useState({
         title: '',
-        description: ''
+        description: '',
+        guides_id: Date.now()
     });
 
     const [post, setPost] = useState([]);
@@ -46,8 +49,8 @@ const GuideCreator = () => {
 
     const publishGuide = e => {
         e.preventDefault();
-        axios
-        .post('https://how-to-guide-unit4-build.herokuapp.com/api/guides', guideData )
+        axiosWithAuth()
+        .post('/guides', guideData )
         .then(response => {
             setPost(response.data);
             console.log('success', post);
@@ -105,7 +108,7 @@ const GuideCreator = () => {
 
         {errors.description.length > 0 ? <p >{errors.description}</p> : null}
         
-        <pre> {JSON.stringify(post, null, 2)}</pre>
+        {/* <pre> {JSON.stringify(post, null, 2)}</pre> */}
         <button disabled={buttonOff} type='submit'>
             Publish
         </button>
