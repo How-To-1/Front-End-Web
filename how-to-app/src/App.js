@@ -22,29 +22,46 @@ import HomePage from './components/HomePage.js'
 import GuideCreator from './components/GuideCreator'
 import styled from 'styled-components'
 
-const PageHeader = styled.nav `
-    box-sizing: border-box;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+const PageHeader = styled.div `
+    width: 100%; 
+    margin:0%;
     padding: 1em;
-    margin-bottom: 2em;
     background-color: #e8e2db;
     color: black;
+    display:flex;
+
+    
 `
+
+const Nav = styled.div`
+display:flex;
+justify-content:flex-end;
+`
+
+const ImgBox = styled.img`
+display:inline;
+`
+
 const PageLinks = styled.a `
-padding-left:10px;
-padding-right:10px;
+padding-left:15px;
+padding-right:15px;
+text-align:right;
+display:inline;
 `
+
+const Button = styled.div`
+background-color:#e8e2db;
+color:black;
+
+`
+
+
+
 
 
 
 
 function App() {
-
-  
-
-
 
 //   const [savedList, setSavedList] = useState([]
     
@@ -52,12 +69,17 @@ function App() {
 //     const addToSavedList = guide => {
 //       setSavedList([...savedList, guide])
 // }
-
   return (
 
+
+    <div >
+      <PageHeader>
+          <ImgBox src ='https://dewey.tailorbrands.com/production/brand_version_mockup_image/524/2930508524_fcc14525-464e-4936-a671-881feb13ce35.png?cb=1588276312'/>
+    <Switch>
     <div className="App">
        <PageHeader>
     {/* <Switch> */}
+
     {/* <PageHeader> */}
     <Route exact path='/login' component={Login}/>
     <Route path='/signup' component={Signup}/>
@@ -69,34 +91,38 @@ function App() {
     {/* route to the contributor/create New howto Page */}
     <PrivateRoute path='/user' component={ContributerUserProfile}/>
     <PrivateRoute path='/update-howto/:id' component={EditHowTo}/>
-                <span>
-                    How To Do Anything
-                </span>
+                
 
-               
     
     
     {/* <SavedGuides list={savedList} />
     <PrivateRoute path='/saved-guides/:id'>
     <ContributerUserProfile />
     </PrivateRoute> */}
+
+
+    </Switch>
+              <Nav> 
+              <PageLinks>
+
     {/* </Switch> */}
    
                <PageLinks>
+
                     <Link to ='/'>
-                        <button>Home</button>
+                        <Button>Home</Button>
                     </Link>
                 </PageLinks>
 
                 <PageLinks>
                     <Link to ='/login'>
-                    <button>Account</button>
+                    <Button>Account</Button>
                     </Link>
                 </PageLinks>
 
                 {/* <PageLinks> */}
                     <Link to ='/signup'>
-                        <button>Sign Up</button>
+                        <Button>Sign Up</Button>
                     </Link>
                     
                     <Link to ='/search'>
@@ -111,13 +137,12 @@ function App() {
                     <button>Create Guide</button>
                   </Link> */}
                 {/* </PageLinks> */}
+                </Nav>
 
+                </PageHeader> 
                 <Route exact path ='/'>
                     <HomePage />
-                </Route>
-             </PageHeader> 
-
-            
+                </Route>          
 
             {/* <div>
               <Route exact path ='/GuideCreator'>
@@ -125,8 +150,6 @@ function App() {
               </Route>
             </div> */}
           
-        
-
             <div>
               <Footer />
             </div>
