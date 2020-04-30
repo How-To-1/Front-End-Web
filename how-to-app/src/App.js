@@ -27,9 +27,7 @@ const PageHeader = styled.div `
     padding: 1em;
     background-color: #e8e2db;
     color: black;
-    display:flex;
-
-    
+    display:flex; 
 `
 
 const Nav = styled.div`
@@ -51,14 +49,7 @@ display:inline;
 const Button = styled.div`
 background-color:#e8e2db;
 color:black;
-
 `
-
-
-
-
-
-
 
 function App() {
 
@@ -75,8 +66,8 @@ function App() {
           <ImgBox src ='https://dewey.tailorbrands.com/production/brand_version_mockup_image/524/2930508524_fcc14525-464e-4936-a671-881feb13ce35.png?cb=1588276312'/>
     <Switch>
     {/* <PageHeader> */}
-    <Route exact path='/login' component={Login}/>
-    <Route path='/signup' component={Signup}/>
+    {/* <Route exact path='/login' component={Login}/>
+    <Route path='/signup' component={Signup}/> */}
 
     {/* Private Routes */}
     {/* route to the view/save howTo page */}
@@ -123,7 +114,12 @@ function App() {
                 </PageHeader> 
                 <Route exact path ='/'>
                     <HomePage />
-                </Route>          
+                </Route> 
+
+                <Switch>
+                  <Route exact path='/login' component={Login}/>
+                  <Route path='/signup' component={Signup}/>     
+                </Switch>    
 
             {/* <div>
               <Route exact path ='/GuideCreator'>
