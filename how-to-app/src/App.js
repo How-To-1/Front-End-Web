@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
 import ContributerUserProfile from './components/ContributerUserProfile';
+import Searcher from './components/Searcher';
 // import ViewerUserProfile from './components/ViewerUserProfile';
 import SavedGuides from './components/SavedGuides'
 import EditHowTo from './components/EditHowTo';
@@ -70,13 +71,19 @@ function App() {
 // }
   return (
 
+
     <div >
       <PageHeader>
           <ImgBox src ='https://dewey.tailorbrands.com/production/brand_version_mockup_image/524/2930508524_fcc14525-464e-4936-a671-881feb13ce35.png?cb=1588276312'/>
     <Switch>
+    <div className="App">
+       <PageHeader>
+    {/* <Switch> */}
+
     {/* <PageHeader> */}
     <Route exact path='/login' component={Login}/>
     <Route path='/signup' component={Signup}/>
+    
 
     {/* Private Routes */}
     {/* route to the view/save howTo page */}
@@ -93,9 +100,15 @@ function App() {
     <ContributerUserProfile />
     </PrivateRoute> */}
 
+
     </Switch>
               <Nav> 
               <PageLinks>
+
+    {/* </Switch> */}
+   
+               <PageLinks>
+
                     <Link to ='/'>
                         <Button>Home</Button>
                     </Link>
@@ -111,6 +124,12 @@ function App() {
                     <Link to ='/signup'>
                         <Button>Sign Up</Button>
                     </Link>
+                    
+                    <Link to ='/search'>
+                        <button>Search</button>
+                    </Link>
+                    <Route path='/search' component={Searcher}/>
+                    
                 {/* </PageLinks> */}
 
                 {/* <PageLinks> */}
