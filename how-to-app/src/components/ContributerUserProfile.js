@@ -11,7 +11,7 @@ const initialState = {
 }
 
 
-const ContributerUserProfile = props => {
+const ContributerUserProfile = props =>{
     const [newHowTo, setNewHowTo] = useState({
         title: '',
         description: '',
@@ -22,6 +22,27 @@ const ContributerUserProfile = props => {
     })
     // const [editing, setEditing] = useState(false);
     // const [editHowTo, setEditHowTo] = useState(initialState);
+//     const [savedList, setSavedList] = useState([]);
+
+//     const addToSavedList = guide => {
+//         setSavedList([...savedList, guide])
+// }
+
+const [searchTerm, setSearchTerm] = useState('')
+const [searchResults, setSearchResults] = useState([])
+
+const handleSearch = event =>{
+    setSearchTerm(event.target.value)
+}
+
+useEffect(()=>{
+    const results = props.guides.filter(guide =>
+        guide.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        setSearchResults(results);
+}, [searchTerm])
+
+
 
     useEffect(()=>{
         props.fetchHowTo();
@@ -36,9 +57,9 @@ const ContributerUserProfile = props => {
         e.preventDefault();
     }
 
-    const editForm = e => {
-       
-    }
+    // const saveHowTo = guide => {
+    //    addToSavedList(guide);
+    // }
 
     const deleteHowTo = id =>{
         
@@ -57,7 +78,7 @@ const ContributerUserProfile = props => {
             
 
             <div>
-    <h1>{`${props.username}  Dashboard` } </h1>
+    <h1> Dashboard  </h1>
             <form onSubmit={submitForm}>
             <label>
                 Add A Title:
@@ -94,6 +115,30 @@ const ContributerUserProfile = props => {
             <button type='submit' onClick={()=>props.postHowTo(newHowTo)}>Submit</button>
             </form>
 
+
+            <div>
+            <h2>Search Guides By Title</h2>
+            <input 
+            type='text' 
+            placeholder='Search Guides'
+            value={searchTerm}
+            onChange={handleSearch}
+            />
+            
+            </div>
+            
+            <div className='search-list'>
+                {searchResults.map(item =>{
+                    return(
+                        <>
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                        <p>{item.category}</p>
+                        </>
+                    )
+                })}
+            </div>
+
         <h2>List of Guides</h2>
         {/* {console.log(props.guides, 'current guides prop.guides')} */}
         {props.guides.map(guide =>{
@@ -112,6 +157,12 @@ const ContributerUserProfile = props => {
                  <Link to={`/update-howto/${guide.id}`}>
                      <div>Edit</div> 
                 </Link>
+
+                {/* <Link onClick={()=> saveHowTo(guide.id)} to={`/saved-guides/`}>
+                    <div>Save Guide</div>
+                </Link> */}
+
+
                
         
         </div>)
