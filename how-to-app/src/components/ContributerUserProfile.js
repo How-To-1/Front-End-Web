@@ -140,7 +140,9 @@ useEffect(()=>{
                     return(
                         <>
                         <h3>{item.title}</h3>
+                        <h5>Guide:</h5>
                         <p>{item.description}</p>
+                        <h5> Category:</h5>
                         <p>{item.category}</p>
                         
                  
