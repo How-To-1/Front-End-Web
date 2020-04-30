@@ -1,10 +1,24 @@
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import SignUpPage from './components/SignUpPage.js'
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+
+//components
+import Login from './components/authentication/Login';
+import Signup from './components/authentication/Signup';
+import ContributerUserProfile from './components/ContributerUserProfile';
+// import ViewerUserProfile from './components/ViewerUserProfile';
+import SavedGuides from './components/SavedGuides'
+import EditHowTo from './components/EditHowTo';
+//privateroute import
+import PrivateRoute from './utils/PrivateRoute';
+import { axiosWithAuth } from './utils/axiosWithAuth';
+
+//pulled from spencers
 import Footer from './components/Footer.js'
 import HomePage from './components/HomePage.js'
 import GuideCreator from './components/GuideCreator.js'
-import {BrowserRouter as Router,Route, Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const PageHeader = styled.nav `
@@ -24,61 +38,91 @@ padding-right:10px;
 
 
 
+
 function App() {
+
+  
+
+
+
+//   const [savedList, setSavedList] = useState([]
+    
+//     );
+//     const addToSavedList = guide => {
+//       setSavedList([...savedList, guide])
+// }
+
   return (
-  <Router>
-            <PageHeader>
+
+    <div className="App">
+    <Switch>
+    {/* <PageHeader> */}
+    <Route exact path='/login' component={Login}/>
+    <Route path='/signup' component={Signup}/>
+
+    {/* Private Routes */}
+    {/* route to the view/save howTo page */}
+    {/* <PrivateRoute path='/user-view-dashboard' component={ViewerUserProfile}/>  */}
+    {/* route to the contributor/create New howto Page */}
+    <PrivateRoute path='/user' component={ContributerUserProfile}/>
+    <PrivateRoute path='/update-howto/:id' component={EditHowTo}/>
                 <span>
                     How To Do Anything
                 </span>
 
-                <PageLinks>
+               
+    
+    
+    {/* <SavedGuides list={savedList} />
+    <PrivateRoute path='/saved-guides/:id'>
+    <ContributerUserProfile />
+    </PrivateRoute> */}
+    </Switch>
+    <PageLinks>
                     <Link to ='/'>
                         <button>Home</button>
                     </Link>
                 </PageLinks>
 
                 <PageLinks>
-                    <Link to ='/Account'>
+                    <Link to ='/login'>
                     <button>Account</button>
                     </Link>
                 </PageLinks>
 
-                <PageLinks>
-                    <Link to ='/SignUpPage'>
+                {/* <PageLinks> */}
+                    <Link to ='/signup'>
                         <button>Sign Up</button>
                     </Link>
-                </PageLinks>
+                {/* </PageLinks> */}
 
-                <PageLinks>
+                {/* <PageLinks> */}
                   <Link to ='/GuideCreator'>
                     <button>Create Guide</button>
                   </Link>
-                </PageLinks>
+                {/* </PageLinks> */}
 
                 <Route exact path ='/'>
                     <HomePage />
                 </Route>
-            </PageHeader>
+            {/* </PageHeader> */}
 
-            <div>
-              <Route exact path ='/SignUpPage'>
-                <SignUpPage />
-              </Route>
-            </div>
+            
 
-            <div>
+            {/* <div>
               <Route exact path ='/GuideCreator'>
                 <GuideCreator />
               </Route>
-            </div>
+            </div> */}
           
         
 
             <div>
               <Footer />
             </div>
-  </Router>
+      
+    </div>
+
   );
 }
 
