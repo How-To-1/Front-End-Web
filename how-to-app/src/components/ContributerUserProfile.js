@@ -1,184 +1,185 @@
-import React, {useState, useEffect} from 'react';
-import {connect} from 'react-redux';
-import {fetchHowTo, postHowTo, getUserName} from './store/actions/actionIndex';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import {Link, useHistory} from 'react-router-dom';
-import {Button, Form, FormGroup, Card, DropdownMenu, DropdownItem, Row, Col, Dropdown} from 'reactstrap';
-import GuideCreator from './GuideCreator';
-import '../App.css';
-
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import {
+  fetchHowTo,
+  postHowTo,
+  getUserName,
+} from "./store/actions/actionIndex";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { Link, useHistory } from "react-router-dom";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Card,
+  DropdownMenu,
+  DropdownItem,
+  Row,
+  Col,
+  Dropdown,
+} from "reactstrap";
+import GuideCreator from "./GuideCreator";
+import "../App.css";
 
 const initialState = {
-    title: '',
-    description: '',
-    
+  title: "",
+  description: "",
+};
+
+const ContributerUserProfile = (props) => {
+  const [newHowTo, setNewHowTo] = useState({
+    title: "",
+    description: "",
+    guides_id: Date.now(),
+    category: "",
+  });
+  
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [newState, setNewState] = useState([]);
+  const history = useHistory();
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    const results = props.guides.filter((guide) =>
+      guide.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    props.fetchHowTo()
+        
+  }, []);
+
+//   useEffect(() => {
+//     props.postHowTo();
+//     history.push("/user");
+//   }, []);
+const processing = id => {
+    setTimeout(()=>{
+        props.history.push('/')
+    }, 1000)
 }
 
 
-const ContributerUserProfile = props =>{
-    const [newHowTo, setNewHowTo] = useState({
-        title: '',
-        description: '',
-        guides_id: Date.now(),
-        category: ''
-        
 
-    })
-    // const [editing, setEditing] = useState(false);
-    // const [editHowTo, setEditHowTo] = useState(initialState);
-//     const [savedList, setSavedList] = useState([]);
+  const changeHandler = (e) => {
+    setNewHowTo({ ...newHowTo, [e.target.name]: e.target.value });
+  };
 
-//     const addToSavedList = guide => {
-//         setSavedList([...savedList, guide])
-// }
+  const submitForm = (e) => {
+    e.preventDefault();
+    processing();
+    props.history.push('/user')
+  };
 
-const [searchTerm, setSearchTerm] = useState('')
-const [searchResults, setSearchResults] = useState([])
-const history = useHistory()
+  return (
+    <div>
+      <div>
+        <h1> Dashboard </h1>
 
-const handleSearch = event =>{
-    setSearchTerm(event.target.value)
-}
-
-useEffect(()=>{
-    const results = props.guides.filter(guide =>
-        guide.title.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-        setSearchResults(results);
-}, [searchTerm])
-
-
-
-
-    useEffect(()=>{
-        props.fetchHowTo();
-    }, [])
-
-    useEffect(()=>{
-        props.postHowTo();
-        history.push('/user');
-        
-    },[])
-
-    const changeHandler = e => {
-        setNewHowTo({...newHowTo, [e.target.name]: e.target.value});
-
-    }
-
-    const submitForm = e =>{
-        e.preventDefault();
-    }
-
-    // const saveHowTo = guide => {
-    //    addToSavedList(guide);
-    // }
-
-    // const deleteHowTo = id =>{
-        
-    //     axiosWithAuth()
-    //     .delete(`/guides/${id}`)
-    //     .then(res =>
-            
-    //         console.log('successfully deleted', res),
-    //         // alert('are you sure you want to delete this how to?'),
-    //         props.history.push('/'))
-    //         .catch(err=>
-    //             console.log('sorry could not delete:', err))
-
-    // }
-
-    // useEffect(()=>{
-    //     deleteHowTo()
-    // },[])
-
-    return(
-        <div>
-            
-
-            <div>
-    <h1> Dashboard  </h1>
-
-
-            <Form onSubmit={submitForm}>
-            <FormGroup>
+        <Form onSubmit={submitForm}>
+          <FormGroup>
             <label>
-                Add A Title:
-                <input 
-                name='title'
-                id=''
-                type='text'
+              Add A Title:
+              <input
+                name="title"
+                id=""
+                type="text"
                 onChange={changeHandler}
                 value={newHowTo.name}
-                />
+              />
             </label>
-            </FormGroup>
-            <FormGroup>
+          </FormGroup>
+          <FormGroup>
             <label>
-                Add Instructions:
-                <textarea
+              Add Instructions:
+              <textarea
                 name="description"
-                id=''
-                type='text'
+                id=""
+                type="text"
                 onChange={changeHandler}
-                value={ newHowTo.name}
-                />
+                value={newHowTo.name}
+              />
             </label>
-            </FormGroup>
-            <FormGroup>
+          </FormGroup>
+          <FormGroup>
             <label htmlFor="category">
-                Choose A Category:
-            <DropdownMenu id='category' name='category'onChange={changeHandler}>
-            
-            <DropdownItem onChange={changeHandler} value='automotive'>Automotive</DropdownItem>
-            <DropdownItem onChange={changeHandler} value='Electonics'>Electronics</DropdownItem>
-            <DropdownItem onChange={changeHandler} value='Food'>Food</DropdownItem>
-             <DropdownItem onChange={changeHandler} value="Home">Home</DropdownItem>
-            
-             </DropdownMenu>
-             </label>
-             </FormGroup>
+              Choose A Category:
+              <DropdownMenu
+                id="category"
+                name="category"
+                onChange={changeHandler}
+              >
+                <DropdownItem onChange={changeHandler} value="automotive">
+                  Automotive
+                </DropdownItem>
+                <DropdownItem onChange={changeHandler} value="Electonics">
+                  Electronics
+                </DropdownItem>
+                <DropdownItem onChange={changeHandler} value="Food">
+                  Food
+                </DropdownItem>
+                <DropdownItem onChange={changeHandler} value="Home">
+                  Home
+                </DropdownItem>
+              </DropdownMenu>
+            </label>
+          </FormGroup>
 
-            <Button type='submit' onClick={()=>props.postHowTo(newHowTo)}>Submit</Button>
-            </Form>
+          <Button type="submit" onClick={() => props.postHowTo(newHowTo)}>
+            Submit
+          </Button>
+        </Form>
 
-
-            <div>
-            <h2>Search Guides By Title To Edit</h2>
-            <input 
-            type='text' 
-            placeholder='Search Guides'
+        <div>
+          <h2>Search Guides By Title To Edit</h2>
+          <input
+            type="text"
+            placeholder="Search Guides"
             value={searchTerm}
             onChange={handleSearch}
-            />
-            
-            </div>
+          />
+        </div>
 
-            <>
-                {searchResults.map(item =>{
-                    return(
-                        <Row>
-                         <Col sm="6">
-                            <Card className="searchBody" body inverse style={{ backgroundColor: '#1A3263', borderColor: '#1A3263' }}>
-                                <h3>{item.title}</h3>
-                                <h5>Guide:</h5>
-                                <p>{item.description}</p>
-                                <h5> Category:</h5>
-                                <p>{item.category}</p>
-                        
-                 
-                 
-                 <Link to={`/update-howto/${item.id}`}>
-                     <Button outline color="primary">Edit</Button> 
-                </Link>
-                {/* <Button outline color="danger" onClick={()=> deleteHowTo(item.id)}>Delete How To</Button> */}
-                        </Card>
-                        
-                          </Col>
-                          </Row>
-                    )
-                })}
-            </>
-                
+        <>
+          {searchResults.map((item) => {
+            return (
+              <Row>
+                <Col sm="6">
+                  <Card
+                    className="searchBody"
+                    body
+                    inverse
+                    style={{
+                      backgroundColor: "#1A3263",
+                      borderColor: "#1A3263",
+                    }}
+                  >
+                    <h3>{item.title}</h3>
+                    <h5>Guide:</h5>
+                    <p>{item.description}</p>
+                    <h5> Category:</h5>
+                    <p>{item.category}</p>
+
+                    <Link to={`/update-howto/${item.id}`}>
+                      <Button outline color="primary">
+                        Edit
+                      </Button>
+                    </Link>
+                    {/* <Button outline color="danger" onClick={()=> deleteHowTo(item.id)}>Delete How To</Button> */}
+                  </Card>
+                </Col>
+              </Row>
+            );
+          })}
+        </>
+
         {/* <h2>List of Guides</h2>
         {console.log(props.guides, 'current guides prop.guides')}
         {props.guides.map(guide =>{
@@ -207,26 +208,22 @@ useEffect(()=>{
         
         </div>)
          })}  */}
-        </div>
-         
+      </div>
+    </div>
+  );
+};
+const mapStateToProps = (state) => {
+  console.log("userprofile map state", state);
+  return {
+    guides: state.howToReducer.guides,
+    isFetching: state.howToReducer.isFetching,
+    error: state.howToReducer.error,
+    addingtHowTo: state.howToReducer.addingtHowTo,
 
+    username: state.userReducer.username,
+  };
+};
 
-        </div>
-    )
-}
-const mapStateToProps = state =>{
-    console.log('userprofile map state', state);
-    return{
-        guides: state.howToReducer.guides,
-        isFetching: state.howToReducer.isFetching,
-        error: state.howToReducer.error,
-        addingtHowTo: state.howToReducer.addingtHowTo,
-
-
-        username: state.userReducer.username
-       
-        
-    }
-}
-
-export default connect(mapStateToProps, {fetchHowTo, postHowTo, getUserName})( ContributerUserProfile);
+export default connect(mapStateToProps, { fetchHowTo, postHowTo, getUserName })(
+  ContributerUserProfile
+);

@@ -56,7 +56,7 @@ function App() {
   return (
 
     <div className="App">
-      
+       <PageHeader>
     {/* <Switch> */}
     {/* <PageHeader> */}
     <Route exact path='/login' component={Login}/>
@@ -81,7 +81,7 @@ function App() {
     <ContributerUserProfile />
     </PrivateRoute> */}
     {/* </Switch> */}
-    <PageHeader>
+   
                <PageLinks>
                     <Link to ='/'>
                         <button>Home</button>

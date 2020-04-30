@@ -25,10 +25,10 @@ const Searcher = props => {
   return (
     <div>
       <div>
-        <h2>Search Guides By Title To Edit</h2>
+        <h2>Search Guides!</h2>
         <input
           type="text"
-          placeholder="Search Guides"
+          placeholder="Enter Guide Title Here"
           value={searchTerm}
           onChange={handleSearch}
         />
@@ -39,7 +39,7 @@ const Searcher = props => {
             console.log('search', item);
           return (
             <Row>
-              <Col sm="6">
+              <Col >
                 <Card
                   className="searchBody"
                   body

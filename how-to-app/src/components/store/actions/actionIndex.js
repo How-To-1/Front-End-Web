@@ -26,6 +26,7 @@ export const fetchHowTo = () => dispatch =>{
        axiosWithAuth().get(`/guides`)
        .then(res =>{
            dispatch({type: FETCH_HOWTO_SUCCESS, payload: res.data})
+           return(res.data)
        }).catch(err=>{
            dispatch({type: FETCH_HOWTO_FAIL, payload: err.response});
         })
@@ -36,7 +37,8 @@ export const postHowTo = newHowTo => dispatch =>{
     axiosWithAuth()
     .post('/guides', newHowTo)
     .then(res =>{
-        dispatch({type: POST_HOWTO_SUCCESS, payload: res.action})
+        console.log(res.data)
+        dispatch({type: POST_HOWTO_SUCCESS, payload: res.data})
         //history.push('/user');
        
     }).catch(err=>{
