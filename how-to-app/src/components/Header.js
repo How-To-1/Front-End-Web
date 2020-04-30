@@ -33,13 +33,13 @@ const Header=() => {
                 </PageLinks>
 
                 <PageLinks>
-                    <Link to ='/Account'>
+                    <Link to ='/user'>
                     <button>Account</button>
                     </Link>
                 </PageLinks>
 
                 <PageLinks>
-                    <Link to ='/SignUpPage'>
+                    <Link to ='/signup'>
                         <button>Sign Up</button>
                     </Link>
                 </PageLinks>

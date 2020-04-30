@@ -40,13 +40,14 @@ const howToReducer = (state = initialState, action) =>{
                 error: action.payload
             }
             case POST_HOWTO_SUCCESS:
-                const newHowTo = {
-                    title: '',
-                    description: '',
-                    id: null,
-                    category: ''
-                }
-                return{...state, guide: [...state.guide, newHowTo]};
+                // const newHowTo = {
+                //     title: '',
+                //     description: '',
+                //     id: null,
+                //     category: ''
+                // }
+                return{...state, guide: [...state.guide, 
+                  action.payload,]};
             case POST_HOWTO_FAIL:
                 return{
                     ...state,
