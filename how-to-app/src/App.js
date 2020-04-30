@@ -18,7 +18,7 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 //pulled from spencers
 import Footer from './components/Footer.js'
 import HomePage from './components/HomePage.js'
-import GuideCreator from './components/GuideCreator.js'
+import GuideCreator from './components/GuideCreator'
 import styled from 'styled-components'
 
 const PageHeader = styled.nav `
@@ -55,6 +55,7 @@ function App() {
   return (
 
     <div className="App">
+      <PageHeader>
     <Switch>
     {/* <PageHeader> */}
     <Route exact path='/login' component={Login}/>
@@ -78,7 +79,8 @@ function App() {
     <ContributerUserProfile />
     </PrivateRoute> */}
     </Switch>
-    <PageLinks>
+              
+               <PageLinks>
                     <Link to ='/'>
                         <button>Home</button>
                     </Link>
@@ -97,15 +99,15 @@ function App() {
                 {/* </PageLinks> */}
 
                 {/* <PageLinks> */}
-                  <Link to ='/GuideCreator'>
+                {/* <Link to ='/GuideCreator' component={GuideCreator}>
                     <button>Create Guide</button>
-                  </Link>
+                  </Link> */}
                 {/* </PageLinks> */}
 
                 <Route exact path ='/'>
                     <HomePage />
                 </Route>
-            {/* </PageHeader> */}
+             </PageHeader> 
 
             
 

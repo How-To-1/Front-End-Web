@@ -4,6 +4,8 @@ import {fetchHowTo, postHowTo, getUserName} from './store/actions/actionIndex';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import {Link} from 'react-router-dom';
 import {Button, Form, FormGroup, Card} from 'reactstrap';
+import GuideCreator from './GuideCreator';
+
 
 const initialState = {
     title: '',
@@ -81,6 +83,8 @@ useEffect(()=>{
 
             <div>
     <h1> Dashboard  </h1>
+
+
             <Form onSubmit={submitForm}>
             <FormGroup>
             <label>
@@ -125,7 +129,7 @@ useEffect(()=>{
 
 
             <div>
-            <h2>Search Guides By Title</h2>
+            <h2>Search Guides By Title To Edit</h2>
             <input 
             type='text' 
             placeholder='Search Guides'
