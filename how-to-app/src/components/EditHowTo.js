@@ -1,6 +1,30 @@
 import React, {useState, useEffect} from 'react';
-import{useParams,useHistory} from 'react-router-dom';
+import{useParams, useHistory} from 'react-router-dom';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
+import {Button} from 'reactstrap';
+import styled from 'styled-components';
+
+
+const submitFormStyle = styled.div`
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+justify-content: center;
+align-items: center;
+margin-left: 50%;
+
+
+`
+
+
+
+
+
+
+
+
+
+
 
 
 const EditHowTo = props =>{
@@ -14,7 +38,7 @@ const EditHowTo = props =>{
 
     }
 
-    const {push} = useHistory();
+    const push = useHistory();
     const [guide, setGuide] = useState(initialHowTo)
     const {id} = useParams();
 
@@ -40,15 +64,38 @@ const EditHowTo = props =>{
         axiosWithAuth()
         .put(`/guides/${guide.id}`, guide)
         .then(res =>{
-            push(`/user`);
+            push.push(`/user`);
         })
     }
 
+    const deleteHowTo = id =>{
+        
+        axiosWithAuth()
+        .delete(`/guides/${id}`)
+        .then(res =>
+            
+            console.log('successfully deleted', res),
+            // alert('are you sure you want to delete this how to?'),
+            push.push('/user')
+            )
+            .catch(err=>
+                console.log('sorry could not delete:', err))
+
+    }
+
+  
+
+    
+
+
+
+
+
     return(
-        <div>
-            <h2>Edit Form:</h2>
+        <submitFormStyle>
+            <h2>Edit Guide:</h2>
             <h3> {`${guide.title}`}</h3>
-        <form onSubmit={updateGuide}>
+        <form  onSubmit={updateGuide}>
             <input 
             type='text'
             name='title'
@@ -75,8 +122,9 @@ const EditHowTo = props =>{
              </select>
         
         </form>
-        <button onClick={()=>updateGuide()}>Submit Changes!</button>
-        </div>
+        <Button outline color="success" onClick={()=>updateGuide()}>Submit Changes!</Button>
+        <Button outline color="danger" onClick={()=> deleteHowTo(guide.id)}>Delete How To</Button>
+        </submitFormStyle>
     )
 
 

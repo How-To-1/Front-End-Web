@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {fetchHowTo, postHowTo, getUserName} from './store/actions/actionIndex';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import {Link, useHistory} from 'react-router-dom';
-import {Button, Form, FormGroup, Card} from 'reactstrap';
+import {Button, Form, FormGroup, Card, DropdownMenu, DropdownItem, Row, Col, Dropdown} from 'reactstrap';
 import GuideCreator from './GuideCreator';
-
+import '../App.css';
 
 
 const initialState = {
@@ -73,18 +73,23 @@ useEffect(()=>{
     //    addToSavedList(guide);
     // }
 
-    const deleteHowTo = id =>{
+    // const deleteHowTo = id =>{
         
-        axiosWithAuth()
-        .delete(`/guides/${id}`)
-        .then(res =>
+    //     axiosWithAuth()
+    //     .delete(`/guides/${id}`)
+    //     .then(res =>
             
-            console.log('successfully deleted', res),
-            alert('are you sure you want to delete this how to?'),
-            props.history.push('/user'))
-            .catch(err=>
-                console.log('sorry could not delete:', err))
-    }
+    //         console.log('successfully deleted', res),
+    //         // alert('are you sure you want to delete this how to?'),
+    //         props.history.push('/'))
+    //         .catch(err=>
+    //             console.log('sorry could not delete:', err))
+
+    // }
+
+    // useEffect(()=>{
+    //     deleteHowTo()
+    // },[])
 
     return(
         <div>
@@ -122,14 +127,14 @@ useEffect(()=>{
             <FormGroup>
             <label htmlFor="category">
                 Choose A Category:
-            <select id='category' name='category'onChange={changeHandler}>
+            <DropdownMenu id='category' name='category'onChange={changeHandler}>
             
-            <option onChange={changeHandler} value='automotive'>Automotive</option>
-            <option onChange={changeHandler} value='Electonics'>Electronics</option>
-            <option onChange={changeHandler} value='Food'>Food</option>
-             <option onChange={changeHandler} value="Home">Home</option>
+            <DropdownItem onChange={changeHandler} value='automotive'>Automotive</DropdownItem>
+            <DropdownItem onChange={changeHandler} value='Electonics'>Electronics</DropdownItem>
+            <DropdownItem onChange={changeHandler} value='Food'>Food</DropdownItem>
+             <DropdownItem onChange={changeHandler} value="Home">Home</DropdownItem>
             
-             </select>
+             </DropdownMenu>
              </label>
              </FormGroup>
 
@@ -148,26 +153,31 @@ useEffect(()=>{
             
             </div>
 
-            <Card className='search-list'>
+            <>
                 {searchResults.map(item =>{
                     return(
-                        <>
-                        <h3>{item.title}</h3>
-                        <h5>Guide:</h5>
-                        <p>{item.description}</p>
-                        <h5> Category:</h5>
-                        <p>{item.category}</p>
+                        <Row>
+                         <Col sm="6">
+                            <Card className="searchBody" body inverse style={{ backgroundColor: '#1A3263', borderColor: '#1A3263' }}>
+                                <h3>{item.title}</h3>
+                                <h5>Guide:</h5>
+                                <p>{item.description}</p>
+                                <h5> Category:</h5>
+                                <p>{item.category}</p>
                         
                  
                  
                  <Link to={`/update-howto/${item.id}`}>
-                     <div>Edit</div> 
+                     <Button outline color="primary">Edit</Button> 
                 </Link>
-                <Button onClick={()=> deleteHowTo(item.id)}>Delete How To</Button>
-                        </>
+                {/* <Button outline color="danger" onClick={()=> deleteHowTo(item.id)}>Delete How To</Button> */}
+                        </Card>
+                        
+                          </Col>
+                          </Row>
                     )
                 })}
-            </Card>
+            </>
                 
         {/* <h2>List of Guides</h2>
         {console.log(props.guides, 'current guides prop.guides')}

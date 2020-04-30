@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import Login from './components/authentication/Login';
 import Signup from './components/authentication/Signup';
 import ContributerUserProfile from './components/ContributerUserProfile';
+import Searcher from './components/Searcher';
 // import ViewerUserProfile from './components/ViewerUserProfile';
 import SavedGuides from './components/SavedGuides'
 import EditHowTo from './components/EditHowTo';
@@ -55,11 +56,12 @@ function App() {
   return (
 
     <div className="App">
-      <PageHeader>
-    <Switch>
+      
+    {/* <Switch> */}
     {/* <PageHeader> */}
     <Route exact path='/login' component={Login}/>
     <Route path='/signup' component={Signup}/>
+    
 
     {/* Private Routes */}
     {/* route to the view/save howTo page */}
@@ -78,8 +80,8 @@ function App() {
     <PrivateRoute path='/saved-guides/:id'>
     <ContributerUserProfile />
     </PrivateRoute> */}
-    </Switch>
-              
+    {/* </Switch> */}
+    <PageHeader>
                <PageLinks>
                     <Link to ='/'>
                         <button>Home</button>
@@ -96,6 +98,12 @@ function App() {
                     <Link to ='/signup'>
                         <button>Sign Up</button>
                     </Link>
+                    
+                    <Link to ='/search'>
+                        <button>Search</button>
+                    </Link>
+                    <Route path='/search' component={Searcher}/>
+                    
                 {/* </PageLinks> */}
 
                 {/* <PageLinks> */}
