@@ -1,11 +1,6 @@
-import React from 'react';
-import './App.css';
-import SignUpPage from './components/SignUpPage.js'
-import Footer from './components/Footer.js'
-import HomePage from './components/HomePage.js'
-import GuideCreator from './components/GuideCreator.js'
-import {BrowserRouter as Router,Route, Link} from 'react-router-dom'
+/* import React from 'react'
 import styled from 'styled-components'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 const PageHeader = styled.nav `
     box-sizing: border-box;
@@ -22,11 +17,10 @@ padding-left:10px;
 padding-right:10px;
 `
 
+const Header=() => {
 
-
-function App() {
-  return (
-  <Router>
+    return(
+        <div>
             <PageHeader>
                 <span>
                     How To Do Anything
@@ -50,36 +44,13 @@ function App() {
                     </Link>
                 </PageLinks>
 
-                <PageLinks>
-                  <Link to ='/GuideCreator'>
-                    <button>Create Guide</button>
-                  </Link>
-                </PageLinks>
-
                 <Route exact path ='/'>
                     <HomePage />
                 </Route>
+
             </PageHeader>
-
-            <div>
-              <Route exact path ='/SignUpPage'>
-                <SignUpPage />
-              </Route>
-            </div>
-
-            <div>
-              <Route exact path ='/GuideCreator'>
-                <GuideCreator />
-              </Route>
-            </div>
-          
-        
-
-            <div>
-              <Footer />
-            </div>
-  </Router>
-  );
+        </div>
+    )
 }
 
-export default App;
+export default Header */

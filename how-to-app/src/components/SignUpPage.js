@@ -4,15 +4,15 @@ import * as yup from 'yup';
 
 
 const signUpSchema = yup.object().shape({
-    name: yup
+    username: yup
     .string()
     .min(3, 'Name is required')
     .required('Name is required'),
     
-    email:yup
+   /*  email:yup
     .string()
     .email('Please provide a valid email')
-    .required('An email is required'),
+    .required('An email is required'), */
 
     password:yup
     .string()
@@ -25,14 +25,14 @@ const SignUpPage = () => {
 
     const [buttonOff, setButtonOff] = useState(true);
     const [signUpData, setSignUpData] =useState({
-        name: '',
-        email: '',
+        username: '',
+        /* email: '', */
         password: '',
     });
 
     const [errors, setErrors] =useState({
-        name: '',
-        email: '',
+        username: '',
+        /* email: '', */
         password: ''
     });
 
@@ -48,18 +48,20 @@ const SignUpPage = () => {
     const signUpSubmit = e => {
         e.preventDefault();
         axios
-        .post(/* 'post url here,' */ signUpData )
+        .post( 'https://how-to-guide-unit4-build.herokuapp.com/api/auth/users/register', signUpData )
         .then(response => {
             setPost(response.data);
             console.log('success', post);
             setSignUpData({
-            name: '',
-            email: '',
+            username: '',
+            /* email: '', */
             password: ''
             });
         })
         .catch(err => console.log(err.response));
     };
+
+    console.log(signUpData)
 
         const validateChange = e => {
             yup
@@ -93,18 +95,18 @@ const SignUpPage = () => {
     return (
         <form onSubmit={signUpSubmit} >
         <div>
-        <label htmlFor="name" >
-            <input type='text' name='name' placeholder='Name' value={signUpData.name} onChange={inputChange}  />
-            Name:
+        <label htmlFor="username" >
+            <input type='text' name='username' placeholder='username' value={signUpData.name} onChange={inputChange}  />
+            UserName:
         </label>
 
-        {errors.name.length > 0 ? <p>{errors.name}</p> : null}
+        {/* {errors.name.length > 0 ? <p>{errors.name}</p> : null}
         <label htmlFor="email" >
             <input type='email' name='email' placeholder='Email' value={signUpData.email} onChange={inputChange} />
             Email:
         </label>
 
-        {errors.email.length > 0 ? <p >{errors.email}</p> : null}
+        {errors.email.length > 0 ? <p >{errors.email}</p> : null} */}
         <label htmlFor="password" >
             <input type='text' name='password' placeholder='Password' value={signUpData.password} onChange={inputChange} />
             Password:
@@ -112,7 +114,7 @@ const SignUpPage = () => {
 
         {errors.password.length > 0 ? <p >{errors.password}</p> : null}
     
-        <pre> {JSON.stringify(post, null, 2)}</pre>
+        {/* <pre> {JSON.stringify(post, null, 2)}</pre> */}
         <button disabled={buttonOff} type='submit'>
             Submit
         </button>
