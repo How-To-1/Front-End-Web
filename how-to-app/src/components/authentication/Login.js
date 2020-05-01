@@ -1,5 +1,26 @@
 import React, {useState, useEffect} from "react";
 import {axiosWithAuth} from '../../utils/axiosWithAuth';
+import styled from 'styled-components'
+
+const Pagebox = styled.div`
+background-color:#84f2d6;
+`
+
+const Loginbox = styled.div`
+margin-top:10px;
+margin-bottom:10px;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+text-align:center;
+background-color:#fc6b3f;
+border:4px solid #fff6da;
+`
+
+const Button = styled.button`
+margin-bottom:10px;
+`
+
 
 
 const initialState = {
@@ -8,10 +29,7 @@ const initialState = {
     password: '',
     isFetching: false
   
-  
 }
-
-
 
 const Login = props => {
   
@@ -48,9 +66,11 @@ const handleChange = e =>{
   // when you have handled the token, navigate to the BubblePage route
   return (
     <>
+    <Pagebox>
+    <Loginbox>
     <div>
       <h1>Welcome to How To!</h1>
-      </div>
+    </div>
 
       <div>
       <h2>Login Here!</h2>
@@ -65,7 +85,7 @@ const handleChange = e =>{
         placeholder = 'username'
         value={login.username}
         onChange={handleChange}
-        />
+        /><br /><br />
         <input 
         label="Password"
         type="password"
@@ -75,12 +95,14 @@ const handleChange = e =>{
         onChange={handleChange}
 
         />
-        <br/>
+        <br/><br />
         
-        <button>Log In</button>
+        <Button>Log In</Button>
         {login.isFetching && 'Logging in'}
         </form>
       </div>
+      </Loginbox>
+      </Pagebox>
     </>
   );
 };

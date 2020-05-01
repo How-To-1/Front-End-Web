@@ -8,11 +8,18 @@ background-color:#84f2d6;
 `
 
 const Loginbox=styled.div`
-margin: auto;
+margin-top:10px;
+margin-bottom:10px;
+margin-left: auto;
+margin-right: auto;
 width: 50%;
 text-align:center;
 background-color:#fc6b3f;
 border:4px solid #fff6da;
+`
+
+const Button = styled.button`
+margin-bottom:10px;
 `
 
 
@@ -55,7 +62,7 @@ const SignUp = props => {
           onChange={handleChange}
           placeholder="username"
         />
-        <br />
+        <br /><br />
         <input
           required
           label="Password"
@@ -67,7 +74,7 @@ const SignUp = props => {
         />
         <br />
         <br />
-        <button>Sign Up</button>
+        <Button>Sign Up</Button>
         {signUpInfo.isFetching}
       </form>
       <br />

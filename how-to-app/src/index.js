@@ -11,6 +11,11 @@ import thunk from 'redux-thunk';
 import {createStore, applyMiddleware} from 'redux'
 import rootReducer from './components/store/reducers/index';
 import 'bootstrap/dist/css/bootstrap.css';
+import styled from 'styled-components'
+
+const Background = styled.div`
+background-color:#84f2d6;
+`
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
@@ -19,7 +24,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <Router>
+      <Background>
       <App />
+      </Background>
     </Router>
     </Provider>
   </React.StrictMode>,
