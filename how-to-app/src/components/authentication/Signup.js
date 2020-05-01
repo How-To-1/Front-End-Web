@@ -4,15 +4,23 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import styled from 'styled-components';
 
 const Pagebox=styled.div`
-background-color:#84f2d6;
+background-color:#f5564e;
 `
 
 const Loginbox=styled.div`
-margin: auto;
+margin-top:10px;
+margin-bottom:10px;
+margin-left: auto;
+margin-right: auto;
 width: 50%;
 text-align:center;
-background-color:#fc6b3f;
-border:4px solid #fff6da;
+background-color:#1a3263;
+border:4px solid #fab95b;
+color:white;
+`
+
+const Button = styled.button`
+margin-bottom:10px;
 `
 
 
@@ -67,11 +75,11 @@ const SignUp = props => {
         />
         <br />
         <br />
-        <button>Sign Up</button>
+        <Button>Sign Up</Button>
         {signUpInfo.isFetching}
       </form>
       <br />
-      Already have an account? <Link to="/">Log In</Link>
+      Already have an account? <Link to="/login">Log In</Link>
       </Loginbox>
       </Pagebox>
      </div> 

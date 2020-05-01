@@ -12,8 +12,8 @@ width:70%;
 display:flex;
 flex-direction:column;
 justify-content:space-evenly;
-background-color:#fc6b3f;
-border:5px solid #fff6da;
+background-color:#1A3263;
+border:5px solid #fab95b;
 border-radius:12px;
 padding:20px;
 box-shadow:0 91px 80px -62px rgba(0, 0, 0, 0.4);
@@ -21,7 +21,7 @@ box-shadow:0 91px 80px -62px rgba(0, 0, 0, 0.4);
 const GuideTitle = styled.div `
 margin:10px;
 font-size:30px;
-color:black;
+color:white;
 padding-left:20px;
 text-align:left;
 border:2px 
@@ -29,7 +29,7 @@ border:2px
 
 const GuideDescription = styled.div `
 margin:10px;
-color:#262525;
+color:white;
 text-align:left;
 `
 
