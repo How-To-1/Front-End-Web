@@ -1,6 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import styled from 'styled-components';
+
+const Pagebox=styled.div`
+background-color:#84f2d6;
+`
+
+const Loginbox=styled.div`
+margin: auto;
+width: 50%;
+text-align:center;
+background-color:#fc6b3f;
+border:4px solid #fff6da;
+`
+
+
 
 const SignUp = props => {
   const [signUpInfo, setSignUpInfo] = useState({
@@ -25,7 +40,10 @@ const SignUp = props => {
   };
   return (
     <div className="entry-container">
-      <h1>New Sign Up</h1>
+
+    <Pagebox>
+      <Loginbox>
+
     
       <h3>Sign Up</h3>
       <form onSubmit={handleSubmit}>
@@ -54,7 +72,9 @@ const SignUp = props => {
       </form>
       <br />
       Already have an account? <Link to="/">Log In</Link>
-    </div>
+      </Loginbox>
+      </Pagebox>
+     </div> 
   );
 };
 export default SignUp;
