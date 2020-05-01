@@ -20,6 +20,8 @@ import {
 } from "reactstrap";
 import GuideCreator from "./GuideCreator";
 import "../App.css";
+import EditHowTo from "./EditHowTo";
+import {PrivateRoute} from '../utils/PrivateRoute';
 
 const initialState = {
   title: "",
@@ -167,8 +169,10 @@ const processing = id => {
                     <h5> Category:</h5>
                     <p>{item.category}</p>
 
-                    <Link to={`/update-howto/${item.id}`}>
+                <Link to={`/update-howto/${item.id}`}>
+                    
                       <Button outline color="primary">
+                          
                         Edit
                       </Button>
                     </Link>

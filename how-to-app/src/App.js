@@ -111,6 +111,7 @@ function App() {
           <Route exact path="/search" component={Searcher} />
 
           <PrivateRoute exact path="/user" component={ContributerUserProfile} />
+          <PrivateRoute path='/update-howto/:id' component={EditHowTo}/>
         </Switch>
 
         <div>
