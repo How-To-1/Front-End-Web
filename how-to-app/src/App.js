@@ -22,6 +22,7 @@ import HomePage from './components/HomePage.js'
 import GuideCreator from './components/GuideCreator'
 import styled from 'styled-components'
 
+
 const PageHeader = styled.div `
     width: 100%; 
     margin:0%;
@@ -34,11 +35,20 @@ const PageHeader = styled.div `
 const Nav = styled.div`
 display:flex;
 justify-content:flex-end;
+
 `
 
 const ImgBox = styled.img`
 display:inline;
 `
+
+
+`
+
+const ImgBox = styled.img`
+display:inline;
+`
+
 
 const PageLinks = styled.a `
 padding-left:15px;
@@ -52,6 +62,7 @@ background-color:#e8e2db;
 color:black;
 `
 
+
 function App() {
 
 //   const [savedList, setSavedList] = useState([]
@@ -62,12 +73,20 @@ function App() {
 // }
   return (
 
+    <div>
+    <ImgBox src ='https://dewey.tailorbrands.com/production/brand_version_mockup_image/524/2930508524_fcc14525-464e-4936-a671-881feb13ce35.png?cb=1588276312'/>
+
+
 
     <div >
       <PageHeader>
           <ImgBox src ='https://dewey.tailorbrands.com/production/brand_version_mockup_image/524/2930508524_fcc14525-464e-4936-a671-881feb13ce35.png?cb=1588276312'/>
     <Switch>
-  
+
+
+    <div className="App">
+       <PageHeader>
+
     {/* <Switch> */}
 
     {/* <PageHeader> */}
@@ -148,6 +167,7 @@ function App() {
               <Footer />
             </div>
       
+    </div>
     </div>
 
   );

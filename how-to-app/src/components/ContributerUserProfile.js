@@ -111,24 +111,24 @@ const processing = id => {
           <FormGroup>
             <label htmlFor="category">
               Choose A Category:
-              <DropdownMenu
+              <select
                 id="category"
                 name="category"
                 onChange={changeHandler}
               >
-                <DropdownItem onChange={changeHandler} value="automotive">
+                <option onChange={changeHandler} value="automotive">
                   Automotive
-                </DropdownItem>
-                <DropdownItem onChange={changeHandler} value="Electonics">
+                </option>
+                <option onChange={changeHandler} value="Electonics">
                   Electronics
-                </DropdownItem>
-                <DropdownItem onChange={changeHandler} value="Food">
+                </option>
+                <option onChange={changeHandler} value="Food">
                   Food
-                </DropdownItem>
-                <DropdownItem onChange={changeHandler} value="Home">
+                </option>
+                <option onChange={changeHandler} value="Home">
                   Home
-                </DropdownItem>
-              </DropdownMenu>
+                </option>
+              </select>
             </label>
           </FormGroup>
 
