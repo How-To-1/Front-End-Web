@@ -94,7 +94,7 @@ function App() {
               
 
     {/* </Switch> */}
-   
+
               <PageLinks>
                     <Link to ='/'>
                         <Button>Home</Button>
@@ -112,9 +112,11 @@ function App() {
                         <Button>Sign Up</Button>
                     </Link>
                     
-                    <Link to ='/search'>
-                        <button>Search</button>
-                    </Link>
+                    <PageLinks>
+                      <Link to ='/search'>
+                        <Button>Search</Button>
+                      </Link>
+                    </PageLinks>
                     <Route path='/search' component={Searcher}/>
                     
                 {/* </PageLinks> */}
