@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter as Router, Route, Link, NavLink, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+  Switch,
+} from "react-router-dom";
 
 //components
 import Login from "./components/authentication/Login";
@@ -51,6 +57,12 @@ const Button = styled.div`
   color: black;
 `;
 
+const fixedHeader = styled.div`
+  display: flex;
+  justify-content: space evenly;
+  align-items: center;
+`;
+
 function App() {
   //   const [savedList, setSavedList] = useState([]
 
@@ -64,40 +76,41 @@ function App() {
       <div>
         <ImgBox src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/524/2930508524_fcc14525-464e-4936-a671-881feb13ce35.png?cb=1588276312" />
         <PageLinks>
-            <Link to="/">
-              <button>Home</button>
-            </Link>
-          </PageLinks>
+          <Link to="/">
+            <button>Home</button>
+          </Link>
+        </PageLinks>
 
-          <PageLinks>
-            <Link to="/login">
-              <button>Account</button>
-            </Link>
-          </PageLinks>
+        <PageLinks>
+          <Link to="/login">
+            <button>Account</button>
+          </Link>
+        </PageLinks>
 
-          <PageLinks>
-            <Link to="/sign-up">
-              <button>Sign Up</button>
-            </Link>
+        <PageLinks>
+          <Link to="/sign-up">
+            <button>Sign Up</button>
+          </Link>
+        </PageLinks>
 
-            <Link to="/search">
-              <button>Search</button>
-            </Link>
-           
-          </PageLinks>
-          <Route exact path="/">
-              <HomePage />
-            </Route>
+        <PageLinks>
+          <Link to="/search">
+            <button>Search</button>
+          </Link>
+        </PageLinks>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
       </div>
 
       <div className="App">
         <Switch>
-        <Route exact path='/sign-up' component={Signup}/>
-        <Route exact path='/login' component={Login}/>
-        
-        <PrivateRoute exact path='/user' component={ContributerUserProfile}/>
+          <Route exact path="/sign-up" component={Signup} />
 
-        <Route exact path="/search" component={Searcher} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/search" component={Searcher} />
+
+          <PrivateRoute exact path="/user" component={ContributerUserProfile} />
         </Switch>
 
         <div>

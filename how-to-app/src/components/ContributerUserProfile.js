@@ -81,8 +81,8 @@ const processing = id => {
   return (
     <div>
       <div>
-        <h1> Dashboard </h1>
-
+        <h1> Welcome To Your Dashboard </h1>
+        <h2>Create New How To</h2>
         <Form onSubmit={submitForm}>
           <FormGroup>
             <label>
