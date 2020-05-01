@@ -71,7 +71,7 @@ const SignUp = props => {
         {signUpInfo.isFetching}
       </form>
       <br />
-      Already have an account? <Link to="/">Log In</Link>
+      Already have an account? <Link to="/login">Log In</Link>
       </Loginbox>
       </Pagebox>
      </div> 
