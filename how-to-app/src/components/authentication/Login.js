@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Pagebox = styled.div`
 background-color:#84f2d6;
 `
+
 const Loginbox = styled.div`
 margin-top:10px;
 margin-bottom:10px;
@@ -97,7 +98,7 @@ const handleChange = e =>{
         />
         <br/>
         
-        <button>Log In</button>
+        <Button>Log In</Button>
         {login.isFetching && 'Logging in'}
         </form>
       </div>
