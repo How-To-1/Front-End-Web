@@ -10,7 +10,7 @@ flex-direction:column;
 justify-content:space-between;
 border: 5px black;
 padding-top: 30px;
-background-color:#84f2d6;
+background-color:#F5564E;
 `
 
 

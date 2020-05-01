@@ -12,20 +12,7 @@ width: 100%;
 justify-content: center;
 align-items: center;
 margin-left: 50%;
-
-
 `
-
-
-
-
-
-
-
-
-
-
-
 
 const EditHowTo = props =>{
     const initialHowTo = {

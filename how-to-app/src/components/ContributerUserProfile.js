@@ -20,6 +20,47 @@ import {
 } from "reactstrap";
 import GuideCreator from "./GuideCreator";
 import "../App.css";
+import styled from 'styled-components'
+
+const UserPage = styled.div`
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+align-content:space-around;
+`
+const GuideBuilderBox = styled.div`
+align-items:center;
+background-color:#1a3263;
+border:4px solid #fab958;
+padding:10px;
+color:white;
+`
+const InputBox = styled.div`
+display:flex;
+`
+
+const SearchBox = styled.div `
+display:flex;
+flex-direction:column;
+background-color:#1a3263;
+border:4px solid #fab958;
+padding:10px;
+flex-basis:100%;
+margin-top:10px;
+color:white;
+
+`
+
+const Searchresults = styled.div`
+display:flex;
+flex-direction:column;
+justify-content: center;
+
+`
+
+
+
 
 const initialState = {
   title: "",
@@ -80,11 +121,13 @@ const processing = id => {
 
   return (
     <div>
-      <div>
+      <UserPage>
         <h1> Dashboard </h1>
 
+        <GuideBuilderBox>
         <Form onSubmit={submitForm}>
           <FormGroup>
+          <InputBox>
             <label>
               Add A Title:
               <input
@@ -95,8 +138,10 @@ const processing = id => {
                 value={newHowTo.name}
               />
             </label>
+            </InputBox>
           </FormGroup>
           <FormGroup>
+          <InputBox>
             <label>
               Add Instructions:
               <textarea
@@ -107,8 +152,10 @@ const processing = id => {
                 value={newHowTo.name}
               />
             </label>
+            </InputBox>
           </FormGroup>
           <FormGroup>
+          <InputBox>
             <label htmlFor="category">
               Choose A Category:
               <select
@@ -130,24 +177,27 @@ const processing = id => {
                 </option>
               </select>
             </label>
+            </InputBox>
           </FormGroup>
 
           <Button type="submit" onClick={() => props.postHowTo(newHowTo)}>
             Submit
           </Button>
         </Form>
+        </GuideBuilderBox>
 
-        <div>
-          <h2>Search Guides By Title To Edit</h2>
+        <SearchBox>
+          <h3>Search Guides By Title To Edit</h3>
           <input
             type="text"
             placeholder="Search Guides"
             value={searchTerm}
             onChange={handleSearch}
           />
-        </div>
+        </SearchBox>
 
         <>
+        <Searchresults>
           {searchResults.map((item) => {
             return (
               <Row>
@@ -178,6 +228,7 @@ const processing = id => {
               </Row>
             );
           })}
+          </Searchresults>
         </>
 
         {/* <h2>List of Guides</h2>
@@ -208,7 +259,7 @@ const processing = id => {
         
         </div>)
          })}  */}
-      </div>
+      </UserPage>
     </div>
   );
 };

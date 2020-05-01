@@ -80,12 +80,11 @@ function App() {
     {/* route to the view/save howTo page */}
     {/* <PrivateRoute path='/user-view-dashboard' component={ViewerUserProfile}/>  */}
     {/* route to the contributor/create New howto Page */}
-    <PrivateRoute path='/user' component={ContributerUserProfile}/>
-    <PrivateRoute path='/update-howto/:id' component={EditHowTo}/>
+    {/* <PrivateRoute path='/user' component={ContributerUserProfile}/>
+    <PrivateRoute path='/update-howto/:id' component={EditHowTo}/> */}
                 
 
-    
-    
+
     {/* <SavedGuides list={savedList} />
     <PrivateRoute path='/saved-guides/:id'>
     <ContributerUserProfile />
@@ -134,6 +133,9 @@ function App() {
                 <Route exact path ='/'>
                     <HomePage />
                 </Route> 
+
+                <PrivateRoute path='/user' component={ContributerUserProfile}/>
+                <PrivateRoute path='/update-howto/:id' component={EditHowTo}/>
 
                 <Switch>
                   <Route exact path='/login' component={Login}/>

@@ -4,7 +4,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import styled from 'styled-components';
 
 const Pagebox=styled.div`
-background-color:#84f2d6;
+background-color:#f5564e;
 `
 
 const Loginbox=styled.div`
@@ -14,8 +14,9 @@ margin-left: auto;
 margin-right: auto;
 width: 50%;
 text-align:center;
-background-color:#fc6b3f;
-border:4px solid #fff6da;
+background-color:#1a3263;
+border:4px solid #fab95b;
+color:white;
 `
 
 const Button = styled.button`

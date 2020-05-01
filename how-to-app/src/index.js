@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import styled from 'styled-components'
 
 const Background = styled.div`
-background-color:#84f2d6;
+background-color:#f5564e;
 `
 
 
